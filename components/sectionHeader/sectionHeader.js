@@ -2,15 +2,26 @@ import React from 'react'
 import { Text, StyleSheet } from 'react-native'
 import styled from 'styled-components/native'
 
-// const styles = StyleSheet.create({
-
-// })
 const SectionHeader = styled.Text`
-  font-size: 20px;
+  font-size: 32px;
+  font-family: 'Poppins_600SemiBold';
+  margin-bottom: 10px;
+  text-align: left;
+  color: ${({ theme }) => theme.colorBlack};
+  &::first-letter {
+    color: ${({ theme }) => theme.colorGreenLight};
+  }
 `
 
-// const sectionHeader = (props) => {
-//   return <Text>{ImagePropTypes.children}</Text>
-// }
+const Header = (props) => {
+  return (
+    <>
+      <SectionHeader>
+        <Text style={{ color: '#1DD1A1' }}>{props.children[0]}</Text>
+        {props.children.slice(1)}
+      </SectionHeader>
+    </>
+  )
+}
 
-export default SectionHeader
+export default Header
