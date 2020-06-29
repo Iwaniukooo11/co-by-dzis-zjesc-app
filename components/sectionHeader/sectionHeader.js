@@ -17,8 +17,10 @@ const Header = (props) => {
   return (
     <>
       <SectionHeader>
-        <Text style={{ color: '#1DD1A1' }}>{props.children[0]}</Text>
-        {props.children.slice(1)}
+        <Text style={{ color: '#1DD1A1' }}>
+          {props.children[0].toUpperCase()}
+        </Text>
+        {props.children.slice(1).toLowerCase()}
       </SectionHeader>
     </>
   )

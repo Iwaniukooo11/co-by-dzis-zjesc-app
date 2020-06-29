@@ -4,7 +4,6 @@ import { StyleSheet, Text, View } from 'react-native'
 
 import Select from './screens/select/select'
 import Ad from './screens/ad/ad'
-// import Select from './screens/select/select'
 
 import 'react-native-gesture-handler'
 import { NavigationContainer } from '@react-navigation/native'
@@ -14,12 +13,8 @@ const Stack = createStackNavigator()
 export default function App() {
   console.log('reload')
   return (
-    // <View style={styles.container}>
-    //   <Text>Open up App.js to start working on your app!</Text>
-    //   <StatusBar style="auto" />
-    // </View>
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Select" component={Select} />
         <Stack.Screen name="Ad" component={Ad} />
       </Stack.Navigator>

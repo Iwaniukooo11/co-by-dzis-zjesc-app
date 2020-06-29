@@ -3,4 +3,5 @@ export default {
   colorGreenDark: '#25B790',
   colorGrey: '#D0D0D0',
   colorBlack: '#2F3138',
+  colorWhite: '#fff',
 }

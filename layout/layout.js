@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import theme from './theme'
+
 import styled, { ThemeProvider } from 'styled-components/native'
 import { AppLoading } from 'expo'
 import {
@@ -16,7 +17,7 @@ const Wrapper = styled.View`
   /* align-items: center; */
   align-items: flex-start;
   /* justify-content: center; */
-  padding: 30px;
+  padding: 50px 30px;
 `
 
 const Layout = (props) => {
@@ -30,7 +31,9 @@ const Layout = (props) => {
     <AppLoading />
   ) : (
     <ThemeProvider theme={theme}>
-      <Wrapper>{props.children}</Wrapper>
+      <>
+        <Wrapper>{props.children}</Wrapper>
+      </>
     </ThemeProvider>
   )
 }
