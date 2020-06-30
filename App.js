@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native'
 
 import Select from './screens/select/select'
 import Ad from './screens/ad/ad'
+import Recipes from './screens/recipes/recipes'
 
 import 'react-native-gesture-handler'
 import { NavigationContainer } from '@react-navigation/native'
@@ -17,6 +18,7 @@ export default function App() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Select" component={Select} />
         <Stack.Screen name="Ad" component={Ad} />
+        <Stack.Screen name="Recipes" component={Recipes} />
       </Stack.Navigator>
     </NavigationContainer>
   )

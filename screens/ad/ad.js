@@ -13,8 +13,21 @@ const Ad = (props) => {
   const [food, setFood] = useState(false)
   const [isAdLoad, setIsAdLoad] = useState(false)
   const [timeLeft, setTimeLeft] = useState(3)
+  // console.log('AD PROPS: ', props.route.params)
 
   useEffect(() => {
+    alert('hook 1')
+    ;(async () => {
+      const foods = await axios.get(
+        `/food?ingredients=${props.route.params.selectedIngredients.join(',')}`
+      )
+      setFood(foods.data.data.data)
+      console.log('|FOODS|', foods.data.data.data)
+    })()
+  }, [])
+
+  useEffect(() => {
+    // alert('hook 2')
     if (timeLeft <= 0) return ''
 
     const intervalId = setInterval(() => {
@@ -24,14 +37,6 @@ const Ad = (props) => {
     return () => clearInterval(intervalId)
   }, [timeLeft])
 
-  useEffect(() => {
-    ;(async () => {
-      const foods = await axios.get(
-        `/food?ingredients=${props.selectedIngredients.join(',')}`
-      )
-      setFood(foods.data.data.data)
-    })()
-  }, [])
   return (
     <Layout>
       <SectionHeader>Dzięki reklamie apka jest darmowa!</SectionHeader>

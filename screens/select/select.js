@@ -141,7 +141,7 @@ const Select = (props) => {
         onPressHandler={() => {
           if (selectedIngredients.length > 0)
             props.navigation.navigate('Ad', {
-              selectedIngredients: { ...selectedIngredients },
+              selectedIngredients: [...selectedIngredients],
             })
         }}
         isActive={selectedIngredients.length > 0}
