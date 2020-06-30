@@ -1,7 +1,7 @@
 import React from 'react'
+import { FlatList, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Text, FlatList, ScrollView, SafeAreaView } from 'react-native'
 import Desc from '../../components/desc/desc'
 import Layout from '../../layout/layout'
 import SectionHeader from '../../components/sectionHeader/sectionHeader'
@@ -10,7 +10,6 @@ import GreenButton from '../../components/greenButton/greenButton'
 import RecipeProposition from '../../components/recipeProposition/recipeProposition'
 
 import theme from '../../layout/theme'
-
 import { Icon } from 'react-native-elements'
 
 const LineWrapper = styled.View`
@@ -21,7 +20,6 @@ const LineWrapper = styled.View`
 
 const StyledIngredient = styled(Desc)`
   color: ${({ theme }) => theme.colorBlack};
-  /* font-family: 'Poppins_600SemiBold'; */
   margin-left: 10px;
 `
 const StyledIndexer = styled(Desc)`
@@ -38,17 +36,10 @@ const Line = styled.View`
 `
 
 const Recipes = (props) => {
-  // console.log('|PROOOPS|', props)
   const foods = [...props.route.params.food]
   const firstFood = foods.shift()
   return (
     <Layout>
-      {/* <SafeAreaView
-        style={{
-          borderBottomWidth: 4,
-          borderBottomColor: theme.colorGreenLight,
-        }}
-      > */}
       <ScrollView showsVerticalScrollIndicator={false}>
         <SectionHeader>Możliwe dania</SectionHeader>
         <Desc>
@@ -71,7 +62,6 @@ const Recipes = (props) => {
         <MiniHeader>Składniki:</MiniHeader>
         <ScrollView style={{ flexGrow: 0, marginBottom: 10 }}>
           <FlatList
-            // contentContainerStyle={styles.recipeList}
             data={firstFood.ingredients}
             renderItem={({ item }) => (
               <StyledIngredient>
@@ -96,7 +86,6 @@ const Recipes = (props) => {
             keyExtractor={(item) => item}
           />
         </ScrollView>
-        {/* </SafeAreaView> */}
         <Line />
 
         <MiniHeader>Inne pasujące dania:</MiniHeader>

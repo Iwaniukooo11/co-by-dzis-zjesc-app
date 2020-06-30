@@ -1,23 +1,16 @@
 import React, { useState, useEffect } from 'react'
+import { Text, FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
-import {
-  Text,
-  Button,
-  FlatList,
-  SafeAreaView,
-  TouchableOpacity,
-} from 'react-native'
+import Layout from '../../layout/layout'
 import SectionHeader from '../../components/sectionHeader/sectionHeader'
 import MiniHeader from '../../components/miniHeader/miniHeader'
 import Desc from '../../components/desc/desc'
 import SelectButton from '../../components/selectButton/selectButton'
 import GreenButton from '../../components/greenButton/greenButton'
-import Layout from '../../layout/layout'
 
 import Collapsible from 'react-native-collapsible'
 import { Icon } from 'react-native-elements'
-
 import axios from '../../utils/axios'
 
 const StyledFlatList = styled.FlatList`
@@ -39,18 +32,11 @@ const Select = (props) => {
     const _state = { ...collapsedState }
     _state[item] = !!!_state[item]
     setCollapsedState(_state)
-    // alert(`click! Now is ${_state[item]}`)
-
-    // const _state = hideAllIngredients()
-    // // const _state = { ...collapsedState }
-    // _state[item] = false
-    // setCollapsedState(_state)
   }
 
   const hideAllIngredients = () => {
     const _collapsedState = { ...collapsedState }
     categories.forEach((category, i) => (_collapsedState[category] = true))
-    // setCollapsedState({ [categories[0]]: true })
     setCollapsedState(_collapsedState)
 
     console.log('hideAllIngr: ', _collapsedState)
@@ -67,16 +53,13 @@ const Select = (props) => {
           '/ingredient?sort=category&limit=100'
         )
         setIngredients(ingredientRes.data.data.data)
-        // console.log(ingredientRes.data.data.data)
 
         //true jak jest schowany!
         const _collapsedState = { ...collapsedState }
         catRes.data.data.data.forEach(
           (category, i) => (_collapsedState[category] = i > 0)
         )
-        // setCollapsedState({ [categories[0]]: true })
         setCollapsedState(_collapsedState)
-        // hideAllIngredients()
         console.log(_collapsedState)
       } catch {
         console.log('err from catch')
@@ -136,7 +119,6 @@ const Select = (props) => {
       <GreenButton
         style={{
           alignSelf: 'center',
-          // opacity: selectedIngredients.length > 0 ? 1 : 0.5,
         }}
         onPressHandler={() => {
           if (selectedIngredients.length > 0)

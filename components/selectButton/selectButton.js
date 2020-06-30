@@ -39,12 +39,10 @@ const selectButton = (props) => {
         if (props.ingredients.includes(props.name)) {
           const _state = props.ingredients.filter((el) => el !== props.name)
           props.setIngredients(_state)
-          // console.log('props ignr; ', _state)
         } else {
           const _state = [...props.ingredients]
           _state.push(props.name)
           props.setIngredients(_state)
-          // console.log('props ignr; ', _state)
         }
       }}
     >
