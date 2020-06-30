@@ -10,15 +10,11 @@ const StyledText = styled.Text`
   /* color:${(props) => (props.isActive ? 'green' : 'red')}; */
 `
 
-const StyledTouchableOpacity = styled.TouchableOpacity`
-  /* background-color: ${({ theme }) => theme.colorGreenLight}; */
-  /* padding: 10px 25px; */
+const StyledTouchableOpacity = styled.TouchableOpacity.attrs((props) => ({
+  style: props.style,
+}))`
   justify-content: center;
-  /* align-self: center; */
   align-items: center;
-  /* opacity: ${(props) => (props.isActive ? 1 : 0.5)}; */
-  /* opacity:1 */
-  /* margin-top: 15px; */
 `
 
 const StyledView = styled.View`
@@ -39,7 +35,7 @@ const greenButton = (props) => {
       style={props.style}
       activeOpacity={0.5}
     >
-      <StyledView isActive={props.isActive}>
+      <StyledView isActive={props.isActive} style={props.style}>
         <StyledText>{props.children}</StyledText>
       </StyledView>
     </StyledTouchableOpacity>

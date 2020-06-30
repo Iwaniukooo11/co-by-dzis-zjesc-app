@@ -148,10 +148,6 @@ const Select = (props) => {
       >
         Znajdź przepis!
       </GreenButton>
-      {/* <Button
-        title="go to ad"
-        onPress={() => props.navigation.navigate('Ad')}
-      /> */}
     </Layout>
   ) : (
     <Text>err</Text>
