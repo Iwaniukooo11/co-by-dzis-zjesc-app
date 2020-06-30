@@ -19,7 +19,9 @@ const Ad = (props) => {
     alert('hook 1')
     ;(async () => {
       const foods = await axios.get(
-        `/food?ingredients=${props.route.params.selectedIngredients.join(',')}`
+        `/food?ingredients=${props.route.params.selectedIngredients.join(
+          ','
+        )}&limit=3`
       )
       setFood(foods.data.data.data)
       console.log('|FOODS|', foods.data.data.data)
