@@ -35,6 +35,28 @@ const Select = (props) => {
   const [collapsedState, setCollapsedState] = useState({})
   const [selectedIngredients, setSelectedIngredients] = useState([])
 
+  const setCollapsedHandler = (item) => {
+    const _state = { ...collapsedState }
+    _state[item] = !!!_state[item]
+    setCollapsedState(_state)
+    // alert(`click! Now is ${_state[item]}`)
+
+    // const _state = hideAllIngredients()
+    // // const _state = { ...collapsedState }
+    // _state[item] = false
+    // setCollapsedState(_state)
+  }
+
+  const hideAllIngredients = () => {
+    const _collapsedState = { ...collapsedState }
+    categories.forEach((category, i) => (_collapsedState[category] = true))
+    // setCollapsedState({ [categories[0]]: true })
+    setCollapsedState(_collapsedState)
+
+    console.log('hideAllIngr: ', _collapsedState)
+    return _collapsedState
+  }
+
   useEffect(() => {
     ;(async () => {
       try {
@@ -45,7 +67,7 @@ const Select = (props) => {
           '/ingredient?sort=category&limit=100'
         )
         setIngredients(ingredientRes.data.data.data)
-        console.log(ingredientRes.data.data.data)
+        // console.log(ingredientRes.data.data.data)
 
         //true jak jest schowany!
         const _collapsedState = { ...collapsedState }
@@ -54,19 +76,13 @@ const Select = (props) => {
         )
         // setCollapsedState({ [categories[0]]: true })
         setCollapsedState(_collapsedState)
+        // hideAllIngredients()
         console.log(_collapsedState)
       } catch {
         console.log('err from catch')
       }
     })()
   }, [])
-
-  const setCollapsedHandler = (item) => {
-    const _state = { ...collapsedState }
-    _state[item] = !!!_state[item]
-    setCollapsedState(_state)
-    // alert(`click! Now is ${_state[item]}`)
-  }
 
   return ingredients.length > 0 ? (
     <Layout>
@@ -117,7 +133,21 @@ const Select = (props) => {
           )
         }}
       />
-      <GreenButton style={{ alignSelf: 'center' }}>Znajdź przepis!</GreenButton>
+      <GreenButton
+        style={{
+          alignSelf: 'center',
+          // opacity: selectedIngredients.length > 0 ? 1 : 0.5,
+        }}
+        onPressHandler={() => {
+          if (selectedIngredients.length > 0)
+            props.navigation.navigate('Ad', {
+              selectedIngredients: { ...selectedIngredients },
+            })
+        }}
+        isActive={selectedIngredients.length > 0}
+      >
+        Znajdź przepis!
+      </GreenButton>
       {/* <Button
         title="go to ad"
         onPress={() => props.navigation.navigate('Ad')}
