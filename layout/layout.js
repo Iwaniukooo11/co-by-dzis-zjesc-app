@@ -17,7 +17,7 @@ const Wrapper = styled.View`
   /* align-items: center; */
   align-items: flex-start;
   /* justify-content: center; */
-  padding: 50px 30px;
+  padding: 50px 30px 15px 30px;
 `
 
 const Layout = (props) => {

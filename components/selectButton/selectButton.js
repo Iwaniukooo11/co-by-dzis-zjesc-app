@@ -3,17 +3,28 @@ import { Text, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
 
 const Btn = styled.View`
-  font-size: 20px;
+  font-size: 18px;
   color: ${(props) =>
     props.active ? props.theme.colorWhite : props.theme.colorBlack};
-  padding: 3px 20px;
+  padding: 3px 0px;
   border: 1.5px solid ${({ theme }) => theme.colorGreenLight};
   background: ${(props) =>
     props.active ? props.theme.colorGreenLight : props.theme.colorWhite};
   font-family: 'Poppins_400Regular';
   border-radius: 10px;
   letter-spacing: 2px;
-  margin: 10px;
+  margin: 8px 5px;
+  width: 90px;
+  justify-content: center;
+`
+
+const StyledText = styled.Text`
+  font-family: 'Poppins_400Regular';
+  letter-spacing: 1px;
+  color: ${(props) =>
+    props.isSelected ? props.theme.colorWhite : props.theme.colorBlack};
+  font-size: 14px;
+  text-align: center;
 `
 
 const selectButton = (props) => {
@@ -38,16 +49,7 @@ const selectButton = (props) => {
       }}
     >
       <Btn active={isSelected}>
-        <Text
-          style={{
-            fontFamily: 'Poppins_400Regular',
-            letterSpacing: 1,
-            color: isSelected ? '#fff' : '#2F3138',
-            fontSize: 16,
-          }}
-        >
-          {props.name}
-        </Text>
+        <StyledText isSelected={isSelected}>{props.name}</StyledText>
       </Btn>
     </TouchableWithoutFeedback>
   )

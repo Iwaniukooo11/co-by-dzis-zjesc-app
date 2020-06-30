@@ -12,6 +12,7 @@ import SectionHeader from '../../components/sectionHeader/sectionHeader'
 import MiniHeader from '../../components/miniHeader/miniHeader'
 import Desc from '../../components/desc/desc'
 import SelectButton from '../../components/selectButton/selectButton'
+import GreenButton from '../../components/greenButton/greenButton'
 import Layout from '../../layout/layout'
 
 import Collapsible from 'react-native-collapsible'
@@ -40,8 +41,11 @@ const Select = (props) => {
         const catRes = await axios.get('/ingredient/all-categories')
         setCategories(catRes.data.data.data)
 
-        const ingredientRes = await axios.get('/ingredient?sort=category')
+        const ingredientRes = await axios.get(
+          '/ingredient?sort=category&limit=100'
+        )
         setIngredients(ingredientRes.data.data.data)
+        console.log(ingredientRes.data.data.data)
 
         //true jak jest schowany!
         const _collapsedState = { ...collapsedState }
@@ -96,6 +100,7 @@ const Select = (props) => {
 
               <Collapsible collapsed={collapsedState[item]} duration={100}>
                 <FlatList
+                  style={{ marginVertical: 5 }}
                   data={ingredients.filter((ingr) => ingr.category === item)}
                   renderItem={({ item }) => (
                     <SelectButton
@@ -112,7 +117,7 @@ const Select = (props) => {
           )
         }}
       />
-
+      <GreenButton style={{ alignSelf: 'center' }}>Znajdź przepis!</GreenButton>
       {/* <Button
         title="go to ad"
         onPress={() => props.navigation.navigate('Ad')}
