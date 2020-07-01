@@ -13,7 +13,6 @@ const Ad = (props) => {
   const [timeLeft, setTimeLeft] = useState(3)
 
   useEffect(() => {
-    alert('hook 1')
     ;(async () => {
       const foods = await axios.get(
         `/food?ingredients=${props.route.params.selectedIngredients.join(
