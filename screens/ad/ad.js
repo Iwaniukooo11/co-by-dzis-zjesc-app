@@ -25,13 +25,13 @@ const Ad = (props) => {
   }, [])
 
   useEffect(() => {
-    if (timeLeft <= 0) return ''
+    if (timeLeft >= -1) {
+      const intervalId = setInterval(() => {
+        if (timeLeft >= -1) setTimeLeft(timeLeft - 1)
+      }, 1000)
 
-    const intervalId = setInterval(() => {
-      if (timeLeft > 0) setTimeLeft(timeLeft - 1)
-    }, 1000)
-
-    return () => clearInterval(intervalId)
+      return () => clearInterval(intervalId)
+    }
   }, [timeLeft])
 
   return (
@@ -46,11 +46,11 @@ const Ad = (props) => {
         onAdViewDidReceiveAd={() => setIsAdLoad(true)}
       />
       <GreenButton
-        isActive={timeLeft == 0 && food !== false}
+        isActive={timeLeft <= -1 && food !== false}
         style={{ alignSelf: 'center' }}
         onPressHandler={() => props.navigation.navigate('Recipes', { food })}
       >
-        {timeLeft != 0 ? timeLeft : 'Zobacz przepisy!'}
+        {timeLeft > -1 ? timeLeft : 'Zobacz przepisy!'}
       </GreenButton>
     </Layout>
   )
