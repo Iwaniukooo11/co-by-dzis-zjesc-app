@@ -3,6 +3,7 @@ import { Text, FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import Layout from '../../layout/layout'
+import Loader from '../../components/loader/loader'
 import SectionHeader from '../../components/sectionHeader/sectionHeader'
 import MiniHeader from '../../components/miniHeader/miniHeader'
 import Desc from '../../components/desc/desc'
@@ -132,7 +133,7 @@ const Select = (props) => {
       </GreenButton>
     </Layout>
   ) : (
-    <Text>err</Text>
+    <Loader />
   )
 }
 

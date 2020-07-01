@@ -15,11 +15,10 @@ const Wrapper = styled.View`
   font-family: 'Poppins_400Regular';
   flex: 1;
   background-color: #fff;
-  /* align-items: center; */
-  align-items: flex-start;
-  /* justify-content: center; */
   padding: 50px 30px 15px 30px;
-  /* border-radius: 10px; */
+  align-items: flex-start;
+  justify-content: ${(props) => (props.center ? 'center' : 'flex-start')};
+  align-items: ${(props) => (props.center ? 'center' : 'flex-start')};
 `
 
 const Layout = (props) => {
@@ -35,7 +34,7 @@ const Layout = (props) => {
     <ThemeProvider theme={theme}>
       <>
         {/* <ScrollView showsVerticalScrollIndicator={false}> */}
-        <Wrapper>{props.children}</Wrapper>
+        <Wrapper center={props.center}>{props.children}</Wrapper>
         {/* </ScrollView> */}
       </>
     </ThemeProvider>
