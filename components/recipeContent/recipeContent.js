@@ -1,5 +1,6 @@
 import React from 'react'
 import { FlatList, ScrollView } from 'react-native'
+import SectionHeader from '../sectionHeader/sectionHeader'
 import MiniHeader from '../miniHeader/miniHeader'
 import styled from 'styled-components/native'
 import theme from '../../layout/theme'
@@ -25,6 +26,7 @@ const StyledIndexer = styled(Desc)`
 const recipeContent = (props) => {
   return (
     <>
+      {props.showName && <SectionHeader>{props.food.name}</SectionHeader>}
       <LineWrapper>
         <Icon
           size={22}

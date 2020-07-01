@@ -1,13 +1,15 @@
-import React from 'react'
-import { Text } from 'react-native'
+import React, { useState } from 'react'
+import { Text, Modal } from 'react-native'
 
 import styled from 'styled-components/native'
 import Desc from '../desc/desc'
+import Layout from '../../layout/layout'
+import RecipeContent from '../recipeContent/recipeContent'
 
 import { Icon } from 'react-native-elements'
 import theme from '../../layout/theme'
 
-const Wrap = styled.TouchableOpacity`
+const WrapTouchable = styled.TouchableOpacity`
   width: 100%;
   flex-direction: row;
   align-items: center;
@@ -36,9 +38,24 @@ const TimeNumber = styled.Text`
 `
 
 const recipeProposition = (props) => {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
-    <Wrap>
-      <Name>{props.name}</Name>
+    <WrapTouchable onPress={() => setIsOpen(true)}>
+      <Modal
+        animationType="slide"
+        visible={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+        // transparent={true}
+        presentationStyle={'overFullScreen'}
+      >
+        <Layout>
+          <RecipeContent food={props.food} showName={true} />
+        </Layout>
+      </Modal>
+      <Name>{`${props.food.name[0].toUpperCase()}${props.food.name.slice(
+        1
+      )}`}</Name>
       <TimeWrap>
         <Icon
           size={22}
@@ -48,11 +65,11 @@ const recipeProposition = (props) => {
           style={{ transform: [{ translateY: -1 }], marginRight: 10 }}
         />
         <TimeNumber>
-          <TimeNumber>{props.time}</TimeNumber>
+          <TimeNumber>{props.food.time}</TimeNumber>
           <TimeUnit>min</TimeUnit>
         </TimeNumber>
       </TimeWrap>
-    </Wrap>
+    </WrapTouchable>
   )
 }
 

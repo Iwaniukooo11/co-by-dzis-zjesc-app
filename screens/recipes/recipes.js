@@ -41,8 +41,9 @@ const Recipes = (props) => {
           data={foods}
           renderItem={({ item }) => (
             <RecipeProposition
-              time={item.time}
-              name={item.name}
+              food={{ ...item }}
+              // time={item.time}
+              // name={item.name}
               keyExtractor={(item) => item.name}
             />
           )}
