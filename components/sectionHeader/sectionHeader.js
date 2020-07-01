@@ -3,7 +3,7 @@ import { Text, StyleSheet } from 'react-native'
 import styled from 'styled-components/native'
 
 const SectionHeader = styled.Text`
-  font-size: 32px;
+  font-size: ${(props) => (props.small ? '26px' : '32px')};
   font-family: 'Poppins_600SemiBold';
   margin-bottom: 10px;
   text-align: left;
@@ -16,7 +16,7 @@ const SectionHeader = styled.Text`
 const Header = (props) => {
   return (
     <>
-      <SectionHeader>
+      <SectionHeader small={props.small}>
         <Text style={{ color: '#1DD1A1' }}>
           {props.children[0].toUpperCase()}
         </Text>

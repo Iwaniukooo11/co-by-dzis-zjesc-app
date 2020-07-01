@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+// import { ScrollView } from 'react-native'
 import theme from './theme'
 
 import styled, { ThemeProvider } from 'styled-components/native'
@@ -33,7 +34,9 @@ const Layout = (props) => {
   ) : (
     <ThemeProvider theme={theme}>
       <>
+        {/* <ScrollView showsVerticalScrollIndicator={false}> */}
         <Wrapper>{props.children}</Wrapper>
+        {/* </ScrollView> */}
       </>
     </ThemeProvider>
   )

@@ -1,5 +1,7 @@
 import React from 'react'
 import { FlatList, ScrollView } from 'react-native'
+
+import Bolder from '../bolder/bolder'
 import SectionHeader from '../sectionHeader/sectionHeader'
 import MiniHeader from '../miniHeader/miniHeader'
 import styled from 'styled-components/native'
@@ -36,7 +38,7 @@ const recipeContent = (props) => {
           style={{ transform: [{ translateY: -3 }], marginRight: 10 }}
         />
         <MiniHeader color="black">
-          Do zrobienia w {props.food.time}min{' '}
+          Do zrobienia w <Bolder fontSize={24}>{props.food.time}min</Bolder>
         </MiniHeader>
       </LineWrapper>
       <MiniHeader>Składniki:</MiniHeader>

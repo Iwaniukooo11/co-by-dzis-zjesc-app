@@ -2,6 +2,7 @@ import React from 'react'
 import { FlatList, ScrollView, Text } from 'react-native'
 import styled from 'styled-components/native'
 
+import Bolder from '../../components/bolder/bolder'
 import Desc from '../../components/desc/desc'
 import Layout from '../../layout/layout'
 import SectionHeader from '../../components/sectionHeader/sectionHeader'
@@ -17,7 +18,7 @@ import RecipeContent from '../../components/recipeContent/recipeContent'
 const Line = styled.View`
   width: 100%;
   height: 3px;
-  margin: 60px 0 20px;
+  margin: 50px 0;
   background-color: ${({ theme }) => theme.colorGreenLight};
 `
 
@@ -29,14 +30,16 @@ const Recipes = (props) => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <SectionHeader>Możliwe dania</SectionHeader>
         <Desc>
-          Najbardziej pasujące jedzenie, które możesz zrobić to {firstFood.name}
+          Najbardziej pasujące jedzenie, które możesz zrobić to{' '}
+          <Bolder>{firstFood.name}</Bolder>
         </Desc>
 
         <RecipeContent food={{ ...firstFood }} />
 
         <Line />
 
-        <MiniHeader>Inne pasujące dania:</MiniHeader>
+        {/* <MiniHeader>Inne pasujące dania:</MiniHeader> */}
+        <SectionHeader small={true}>Inne pasujące dania:</SectionHeader>
         <FlatList
           data={foods}
           renderItem={({ item }) => (
