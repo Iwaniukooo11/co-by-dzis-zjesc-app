@@ -47,7 +47,11 @@ const recipeContent = (props) => {
           data={props.food.ingredients}
           renderItem={({ item }) => (
             <StyledIngredient>
-              <StyledIndexer>{`${item.quantity}x  `}</StyledIndexer>
+              <StyledIndexer>
+                {item.quantityType === 'jednostki'
+                  ? `${item.quantity}x  `
+                  : `${item.quantity}${item.quantityType}  `}
+              </StyledIndexer>
               {item.ingredient.name}
             </StyledIngredient>
           )}
