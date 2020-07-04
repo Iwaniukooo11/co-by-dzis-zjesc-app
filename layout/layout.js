@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-// import { ScrollView } from 'react-native'
+import { BackHandler } from 'react-native'
 import theme from './theme'
 
 import styled, { ThemeProvider } from 'styled-components/native'
@@ -15,6 +15,7 @@ const Wrapper = styled.View`
   font-family: 'Poppins_400Regular';
   flex: 1;
   background-color: #fff;
+  /* background-color: red; */
   padding: 50px 30px 15px 30px;
   align-items: flex-start;
   justify-content: ${(props) => (props.center ? 'center' : 'flex-start')};
@@ -27,6 +28,9 @@ const Layout = (props) => {
     Poppins_600SemiBold,
     Poppins_700Bold,
   })
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', () => true)
+  }, [])
 
   return !isFontLoaded ? (
     <AppLoading />

@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Text, Modal } from 'react-native'
+import React, { useState, useRef, useEffect } from 'react'
+import { Text, Modal, Animated, TouchableOpacity } from 'react-native'
 
 import styled from 'styled-components/native'
 import Desc from '../desc/desc'
@@ -37,8 +37,35 @@ const TimeNumber = styled.Text`
   color: ${({ theme }) => theme.colorGreenLight};
 `
 
+const StyledCloseIcon = styled(Icon)`
+  /* position: absolute; */
+  top: 10px;
+  right: 10px;
+  /* transform: scale(1.5) translateY(-20px); */
+  /* margin-left: 250px; */
+  margin: 0 10px 20px 250px;
+`
+
+const StyledTouchableOpacity = styled(TouchableOpacity)`
+  position: absolute;
+  top: 20px;
+  right: 30px;
+`
+
 const recipeProposition = (props) => {
   const [isOpen, setIsOpen] = useState(false)
+
+  const fadeAnim = useRef(new Animated.Value(0)).current
+
+  const fadeIn = () => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 500,
+      delay: 75,
+    }).start()
+  }
+  // useEffect(() => fadeIn())
+  useEffect()
 
   return (
     <WrapTouchable onPress={() => setIsOpen(true)}>
@@ -49,13 +76,26 @@ const recipeProposition = (props) => {
         // transparent={true}
         presentationStyle={'overFullScreen'}
       >
+        {/* <Animated.View style={{ opacity: fadeAnim }}> */}
         <Layout>
+          <StyledTouchableOpacity onPress={() => setIsOpen(false)}>
+            <StyledCloseIcon
+              size={32}
+              name="times-circle"
+              type="font-awesome"
+              color={theme.colorGreenLight}
+              // color={theme.colorGrey}
+
+              // style={{ transform: [{ translateY: -1 }], marginRight: 10 }}
+            />
+          </StyledTouchableOpacity>
           <RecipeContent food={props.food} showName={true} />
         </Layout>
+        {/* </Animated.View> */}
       </Modal>
-      <Name>{`${props.food.name[0].toUpperCase()}${props.food.name.slice(
-        1
-      )}`}</Name>
+      <Name>
+        {`${props.food.name[0].toUpperCase()}${props.food.name.slice(1)}`}
+      </Name>
       <TimeWrap>
         <Icon
           size={22}

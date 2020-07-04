@@ -39,18 +39,22 @@ const Recipes = (props) => {
         <Line />
 
         {/* <MiniHeader>Inne pasujące dania:</MiniHeader> */}
-        <SectionHeader small={true}>Inne pasujące dania:</SectionHeader>
-        <FlatList
-          data={foods}
-          renderItem={({ item }) => (
-            <RecipeProposition
-              food={{ ...item }}
-              // time={item.time}
-              // name={item.name}
-              keyExtractor={(item) => item.name}
+        {foods.length > 1 && (
+          <>
+            <SectionHeader small={true}>Inne pasujące dania:</SectionHeader>
+            <FlatList
+              data={foods}
+              renderItem={({ item }) => (
+                <RecipeProposition
+                  food={{ ...item }}
+                  // time={item.time}
+                  // name={item.name}
+                  keyExtractor={(item) => item.name}
+                />
+              )}
             />
-          )}
-        />
+          </>
+        )}
       </ScrollView>
     </Layout>
   )
