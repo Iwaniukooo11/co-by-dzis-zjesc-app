@@ -65,7 +65,7 @@ const recipeProposition = (props) => {
     }).start()
   }
   // useEffect(() => fadeIn())
-  useEffect()
+  // useEffect()
 
   return (
     <WrapTouchable onPress={() => setIsOpen(true)}>

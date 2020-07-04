@@ -36,6 +36,17 @@ const Recipes = (props) => {
 
         <RecipeContent food={{ ...firstFood }} />
 
+        <Desc center style={{ marginTop: 25, marginBottom: 10 }}>
+          Nic Cię nie satysfakcjonuje?
+        </Desc>
+        <GreenButton
+          isActive={true}
+          onPressHandler={() =>
+            props.navigation.navigate('Select', { random: Math.random() })
+          }
+        >
+          Szukaj ponownie
+        </GreenButton>
         <Line />
 
         {/* <MiniHeader>Inne pasujące dania:</MiniHeader> */}

@@ -44,29 +44,57 @@ const Select = (props) => {
     return _collapsedState
   }
 
+  // useEffect(() => {
+  //   alert('render!')
+  //   setCollapsedState({})
+  //   setSelectedIngredients([])
+  // }, [])
+  // props.navigation.addListener('willFocus', (payload) => {
+  //   alert('uhuhu')
+  //   setCollapsedState({})
+  //   setSelectedIngredients([])
+  // })
+  const fixCollapse = (data) => {
+    const _collapsedState = [...data]
+    data.forEach((category, i) => (_collapsedState[category] = i > 0))
+    setCollapsedState(_collapsedState)
+    console.log('DATA: ', _collapsedState)
+  }
+
   useEffect(() => {
     ;(async () => {
       try {
-        const catRes = await axios.get('/ingredient/all-categories')
-        setCategories(catRes.data.data.data)
+        // alert('uhuhu')
+        if (props?.route?.params?.random) {
+          alert('kurwa random')
+          setSelectedIngredients([])
+          setCollapsedState({})
+          fixCollapse([...categories])
+          alert(selectedIngredients.length)
+        } else {
+          alert(';not random')
+          const catRes = await axios.get('/ingredient/all-categories')
+          setCategories(catRes.data.data.data)
 
-        const ingredientRes = await axios.get(
-          '/ingredient?sort=category&limit=100'
-        )
-        setIngredients(ingredientRes.data.data.data)
+          const ingredientRes = await axios.get(
+            '/ingredient?sort=category&limit=100'
+          )
+          setIngredients(ingredientRes.data.data.data)
 
-        //true jak jest schowany!
-        const _collapsedState = { ...collapsedState }
-        catRes.data.data.data.forEach(
-          (category, i) => (_collapsedState[category] = i > 0)
-        )
-        setCollapsedState(_collapsedState)
-        console.log(_collapsedState)
-      } catch {
-        console.log('err from catch')
+          //true jak jest schowany!
+          // const _collapsedState = { ...collapsedState }
+          // catRes.data.data.data.forEach(
+          //   (category, i) => (_collapsedState[category] = i > 0)
+          // )
+          // setCollapsedState(_collapsedState)
+          // console.log(_collapsedState)
+          fixCollapse(catRes.data.data.data)
+        }
+      } catch (err) {
+        console.log('err from catch', err)
       }
     })()
-  }, [])
+  }, [props?.route?.params?.random])
 
   return ingredients.length > 0 ? (
     <Layout>

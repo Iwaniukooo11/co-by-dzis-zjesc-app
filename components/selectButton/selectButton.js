@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Text, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -29,6 +29,9 @@ const StyledText = styled.Text`
 
 const selectButton = (props) => {
   const [isSelected, setIsSelected] = useState(false)
+  useEffect(() => setIsSelected(props.ingredients.includes(props.name)), [
+    props.ingredients,
+  ])
 
   return (
     <TouchableWithoutFeedback
