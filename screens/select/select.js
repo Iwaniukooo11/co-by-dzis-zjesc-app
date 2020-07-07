@@ -202,9 +202,12 @@ const Select = (props) => {
               selectedIngredients: [...selectedIngredients],
             })
         }}
-        isActive={selectedIngredients.length > 0}
+        isActive={selectedIngredients.length >= 5}
       >
-        Znajdź przepis!
+        {/* Znajdź przepis! */}
+        {selectedIngredients.length >= 5
+          ? 'Znajdź przepis!'
+          : `Zaznacz jeszcze ${5 - selectedIngredients.length}`}
       </GreenButton>
     </Layout>
   ) : (
