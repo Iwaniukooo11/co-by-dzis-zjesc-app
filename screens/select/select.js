@@ -145,48 +145,20 @@ const Select = (props) => {
               </StyledTouchableOpacity>
 
               <Collapsible collapsed={collapsedState[item]} duration={0}>
-                {/* <View
-                  style={styles.listContainer}
-                  // contentContainerStyle={styles.listContainer}
-                  onPress={() => alert('pressss')}
-                > */}
-                {/* <ScrollView
-                  style={styles.list}
-                  contentContainerStyle={styles.listContainer}
-                  onPress={() => alert('pressss')}
-                > */}
                 <FlatList
                   style={{ marginVertical: 5 }}
                   contentContainerStyle={styles.listContainer}
                   data={ingredients.filter((ingr) => ingr.category === item)}
                   renderItem={({ item }) => (
-                    <>
-                      <Text>{'\n'}</Text>
-                      <SelectButton
-                        name={item.name}
-                        ingredients={[...selectedIngredients]}
-                        setIngredients={setSelectedIngredients}
-                      />
-                      <Text>{'\n'}</Text>
-                    </>
+                    <SelectButton
+                      name={item.name}
+                      ingredients={[...selectedIngredients]}
+                      setIngredients={setSelectedIngredients}
+                    />
                   )}
                   keyExtractor={(obj) => obj._id}
                   numColumns={3}
                 />
-
-                {/* {ingredients
-                    .filter((ingr) => ingr.category === item)
-                    .map((item) => (
-                      <SelectButton
-                        key={item.name}
-                        name={item.name}
-                        // name={'test'}
-                        ingredients={[...selectedIngredients]}
-                        setIngredients={setSelectedIngredients}
-                      />
-                    ))} */}
-                {/* </ScrollView> */}
-                {/* </View> */}
               </Collapsible>
             </>
           )
@@ -197,12 +169,11 @@ const Select = (props) => {
           alignSelf: 'center',
         }}
         onPressHandler={() => {
-          if (selectedIngredients.length > 0)
-            props.navigation.navigate('Ad', {
-              selectedIngredients: [...selectedIngredients],
-            })
+          props.navigation.navigate('Ad', {
+            selectedIngredients: [...selectedIngredients],
+          })
         }}
-        isActive={selectedIngredients.length >= 5}
+        isActive={selectedIngredients.length > 4}
       >
         {/* Znajdź przepis! */}
         {selectedIngredients.length >= 5

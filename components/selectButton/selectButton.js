@@ -37,8 +37,8 @@ const selectButton = (props) => {
   const [isSelected, setIsSelected] = useState(false)
   useEffect(
     () => setIsSelected(props.ingredients.includes(props.name)),
-    //  [props.ingredients]
-    []
+    [props.ingredients]
+    // []
   )
 
   const onPressHandler = () => {

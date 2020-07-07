@@ -31,7 +31,7 @@ const StyledView = styled.View`
 const greenButton = (props) => {
   return (
     <StyledTouchableOpacity
-      onPress={props.onPressHandler}
+      onPress={props.isActive ? props.onPressHandler : null}
       style={props.style}
       activeOpacity={0.5}
     >
