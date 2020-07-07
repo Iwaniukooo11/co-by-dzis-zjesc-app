@@ -19,6 +19,8 @@ const Line = styled.View`
   width: 100%;
   height: 3px;
   margin: 50px 0;
+  margin-bottom: ${(props) => (props.first ? '0px' : '50px')};
+  margin-top:${(props) => (props.second ? '30px' : '50px')}
   background-color: ${({ theme }) => theme.colorGreenLight};
 `
 
@@ -36,6 +38,7 @@ const Recipes = (props) => {
 
         <RecipeContent food={{ ...firstFood }} />
 
+        <Line first />
         <Desc center style={{ marginTop: 25, marginBottom: 10 }}>
           Nic Cię nie satysfakcjonuje?
         </Desc>
@@ -47,10 +50,10 @@ const Recipes = (props) => {
         >
           Szukaj ponownie
         </GreenButton>
-        <Line />
+        <Line second />
 
         {/* <MiniHeader>Inne pasujące dania:</MiniHeader> */}
-        {foods.length > 1 && (
+        {foods.length > 0 && (
           <>
             <SectionHeader small={true}>Inne pasujące dania:</SectionHeader>
             <FlatList

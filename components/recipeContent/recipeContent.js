@@ -12,12 +12,13 @@ import { Icon } from 'react-native-elements'
 const LineWrapper = styled.View`
   flex-direction: row;
   align-items: center;
-  margin: 20px 0 10px;
+  margin: 20px 0 20px;
 `
 
 const StyledIngredient = styled(Desc)`
   color: ${({ theme }) => theme.colorBlack};
   margin-left: 10px;
+  /* margin: 10px 0 10px 10px; */
 `
 const StyledIndexer = styled(Desc)`
   color: ${({ theme }) => theme.colorGreenLight};
@@ -42,17 +43,20 @@ const recipeContent = (props) => {
         </MiniHeader>
       </LineWrapper>
       <MiniHeader>Składniki:</MiniHeader>
-      <ScrollView style={{ flexGrow: 0, marginBottom: 10 }}>
+      <ScrollView style={{ flexGrow: 0, marginBottom: 40 }}>
         <FlatList
           data={props.food.ingredients}
           renderItem={({ item }) => (
             <StyledIngredient>
               <StyledIndexer>
                 {item.quantityType === 'jednostki'
-                  ? `${item.quantity}x  `
-                  : `${item.quantity}${item.quantityType}  `}
+                  ? `${item.quantity}x `
+                  : `${item.quantity == 0 ? '' : item.quantity}${
+                      item.quantityType
+                    } `}
               </StyledIndexer>
-              {item.ingredient.name}
+              {`${item.ingredient.name}`}
+              {/* {item.optional && '  (opcjonalnie)'} */}
             </StyledIngredient>
           )}
           keyExtractor={(item) => item.id}
@@ -63,9 +67,9 @@ const recipeContent = (props) => {
         <FlatList
           data={props.food.content}
           renderItem={({ item, index }) => (
-            <StyledIngredient>
+            <StyledIngredient style={{ marginVertical: 5 }}>
               <StyledIndexer>{`${index * 1 + 1}.  `}</StyledIndexer>
-              <Desc> {item}</Desc>
+              <Desc lineHeight={1.1}> {item}</Desc>
             </StyledIngredient>
           )}
           keyExtractor={(item) => item}

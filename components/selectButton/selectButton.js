@@ -14,7 +14,8 @@ const Btn = styled.View`
   border-radius: 10px;
   letter-spacing: 2px;
   margin: 8px 5px;
-  width: 90px;
+  /* width: 90px; */
+  padding: 5px 10px;
   justify-content: center;
 `
 

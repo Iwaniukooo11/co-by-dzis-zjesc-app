@@ -21,6 +21,7 @@ const StyledFlatList = styled.FlatList`
 const StyledTouchableOpacity = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
+  margin: 3px 0;
 `
 
 const Select = (props) => {
@@ -66,13 +67,13 @@ const Select = (props) => {
       try {
         // alert('uhuhu')
         if (props?.route?.params?.random) {
-          alert('kurwa random')
+          // alert('kurwa random')
           setSelectedIngredients([])
           setCollapsedState({})
           fixCollapse([...categories])
-          alert(selectedIngredients.length)
+          // alert(selectedIngredients.length)
         } else {
-          alert(';not random')
+          // alert(';not random')
           const catRes = await axios.get('/ingredient/all-categories')
           setCategories(catRes.data.data.data)
 
@@ -104,6 +105,7 @@ const Select = (props) => {
       <StyledFlatList
         data={categories}
         keyExtractor={(obj) => obj.name}
+        showsVerticalScrollIndicator={false}
         renderItem={({ item }) => {
           return (
             <>
