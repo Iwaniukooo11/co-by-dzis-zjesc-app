@@ -20,39 +20,64 @@ const Line = styled.View`
   height: 3px;
   margin: 50px 0;
   margin-bottom: ${(props) => (props.first ? '0px' : '50px')};
-  margin-top:${(props) => (props.second ? '30px' : '50px')}
+  margin-top: ${(props) => (props.second ? '30px' : '50px')};
   background-color: ${({ theme }) => theme.colorGreenLight};
 `
 
 const Recipes = (props) => {
-  const foods = [...props.route.params.food]
+  const foods = [...props.route.params.food] || []
+
   const firstFood = foods.shift()
   return (
     <Layout>
       <ScrollView showsVerticalScrollIndicator={false}>
         <SectionHeader>Możliwe dania</SectionHeader>
-        <Desc>
-          Najbardziej pasujące jedzenie, które możesz zrobić to{' '}
-          <Bolder>{firstFood.name}</Bolder>
-        </Desc>
+        {firstFood ? (
+          <>
+            <Desc>
+              Najbardziej pasujące jedzenie, które możesz zrobić to{' '}
+              <Bolder>{firstFood.name}</Bolder>
+            </Desc>
 
-        <RecipeContent food={{ ...firstFood }} />
+            <RecipeContent food={{ ...firstFood }} />
 
-        <Line first />
-        <Desc center style={{ marginTop: 25, marginBottom: 10 }}>
-          Nic Cię nie satysfakcjonuje?
-        </Desc>
-        <GreenButton
-          isActive={true}
-          onPressHandler={() =>
-            props.navigation.navigate('Select', { random: Math.random() })
-          }
-        >
-          Szukaj ponownie
-        </GreenButton>
-        <Line second />
+            <Line first />
+            <Desc center style={{ marginTop: 25, marginBottom: 10 }}>
+              Nic Cię nie satysfakcjonuje?
+            </Desc>
+            <GreenButton
+              isActive={true}
+              onPressHandler={() =>
+                props.navigation.navigate('Select', { random: Math.random() })
+              }
+            >
+              Szukaj ponownie
+            </GreenButton>
+            <Line second />
+          </>
+        ) : (
+          <>
+            <Desc center style={{ marginTop: 30 }}>
+              Niestety, nie ma żadnego jedzenia, które można zrobić z wybranych
+              przez Ciebie podpisów
+            </Desc>
+            <Desc center style={{ marginVertical: 20 }}>
+              Wybierz więcej składników!
+            </Desc>
 
-        {/* <MiniHeader>Inne pasujące dania:</MiniHeader> */}
+            {/* <Line /> */}
+            <GreenButton
+              isActive={true}
+              onPressHandler={() =>
+                props.navigation.navigate('Select', { random: Math.random() })
+              }
+            >
+              Szukaj ponownie
+            </GreenButton>
+            {/* <Line second /> */}
+          </>
+        )}
+
         {foods.length > 0 && (
           <>
             <SectionHeader small={true}>Inne pasujące dania:</SectionHeader>
