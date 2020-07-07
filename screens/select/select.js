@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Text, FlatList } from 'react-native'
+import { Text, FlatList, StyleSheet, View, SafeAreaView } from 'react-native'
 import styled from 'styled-components/native'
 
 import Layout from '../../layout/layout'
@@ -13,6 +13,22 @@ import GreenButton from '../../components/greenButton/greenButton'
 import Collapsible from 'react-native-collapsible'
 import { Icon } from 'react-native-elements'
 import axios from '../../utils/axios'
+import { ScrollView } from 'react-native-gesture-handler'
+
+const styles = StyleSheet.create({
+  list: {
+    // flexGrow: 1,
+    // backgroundColor: 'red',
+  },
+  listContainer: {
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    alignContent: 'center',
+    flex: 1,
+    // flexDirection: 'row',
+    // flexWrap: 'wrap',
+  },
+})
 
 const StyledFlatList = styled.FlatList`
   margin: 20px 0;
@@ -128,20 +144,49 @@ const Select = (props) => {
                 <MiniHeader>{item}</MiniHeader>
               </StyledTouchableOpacity>
 
-              <Collapsible collapsed={collapsedState[item]} duration={100}>
+              <Collapsible collapsed={collapsedState[item]} duration={0}>
+                {/* <View
+                  style={styles.listContainer}
+                  // contentContainerStyle={styles.listContainer}
+                  onPress={() => alert('pressss')}
+                > */}
+                {/* <ScrollView
+                  style={styles.list}
+                  contentContainerStyle={styles.listContainer}
+                  onPress={() => alert('pressss')}
+                > */}
                 <FlatList
                   style={{ marginVertical: 5 }}
+                  contentContainerStyle={styles.listContainer}
                   data={ingredients.filter((ingr) => ingr.category === item)}
                   renderItem={({ item }) => (
-                    <SelectButton
-                      name={item.name}
-                      ingredients={[...selectedIngredients]}
-                      setIngredients={setSelectedIngredients}
-                    />
+                    <>
+                      <Text>{'\n'}</Text>
+                      <SelectButton
+                        name={item.name}
+                        ingredients={[...selectedIngredients]}
+                        setIngredients={setSelectedIngredients}
+                      />
+                      <Text>{'\n'}</Text>
+                    </>
                   )}
                   keyExtractor={(obj) => obj._id}
                   numColumns={3}
                 />
+
+                {/* {ingredients
+                    .filter((ingr) => ingr.category === item)
+                    .map((item) => (
+                      <SelectButton
+                        key={item.name}
+                        name={item.name}
+                        // name={'test'}
+                        ingredients={[...selectedIngredients]}
+                        setIngredients={setSelectedIngredients}
+                      />
+                    ))} */}
+                {/* </ScrollView> */}
+                {/* </View> */}
               </Collapsible>
             </>
           )

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Text, TouchableWithoutFeedback } from 'react-native'
+import { Text, TouchableWithoutFeedback, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 const Btn = styled.View`
-  font-size: 18px;
+  /* font-size: 18px; */
   color: ${(props) =>
     props.active ? props.theme.colorWhite : props.theme.colorBlack};
   padding: 3px 0px;
@@ -15,8 +15,11 @@ const Btn = styled.View`
   letter-spacing: 2px;
   margin: 8px 5px;
   /* width: 90px; */
-  padding: 5px 10px;
+  width:30%;
+  /* padding: 5px 10px; */
   justify-content: center;
+
+  /* font-size: ${(props) => (props.test ? '22px' : '18px')}; */
 `
 
 const StyledText = styled.Text`
@@ -24,31 +27,54 @@ const StyledText = styled.Text`
   letter-spacing: 1px;
   color: ${(props) =>
     props.isSelected ? props.theme.colorWhite : props.theme.colorBlack};
-  font-size: 14px;
+  /* font-size: 14px; */
   text-align: center;
+
+  /* font-size: ${(props) => (props.test ? '22px' : '18px')}; */
 `
 
 const selectButton = (props) => {
   const [isSelected, setIsSelected] = useState(false)
-  useEffect(() => setIsSelected(props.ingredients.includes(props.name)), [
-    props.ingredients,
-  ])
+  useEffect(
+    () => setIsSelected(props.ingredients.includes(props.name)),
+    //  [props.ingredients]
+    []
+  )
+
+  const onPressHandler = () => {
+    // setTest(true)
+    setIsSelected(!isSelected)
+    console.log('props: ', props)
+
+    if (props.ingredients.includes(props.name)) {
+      const _state = props.ingredients.filter((el) => el !== props.name)
+      props.setIngredients(_state)
+    } else {
+      const _state = [...props.ingredients]
+      _state.push(props.name)
+      props.setIngredients(_state)
+    }
+    // alert('lik')
+  }
 
   return (
     <TouchableWithoutFeedback
-      onPress={() => {
-        setIsSelected(!isSelected)
-        console.log('props: ', props)
+      // style={{ backgroundColor: 'red' }}
 
-        if (props.ingredients.includes(props.name)) {
-          const _state = props.ingredients.filter((el) => el !== props.name)
-          props.setIngredients(_state)
-        } else {
-          const _state = [...props.ingredients]
-          _state.push(props.name)
-          props.setIngredients(_state)
-        }
-      }}
+      // onPress={() => {
+      //   setIsSelected(!isSelected)
+      //   console.log('props: ', props)
+
+      //   if (props.ingredients.includes(props.name)) {
+      //     const _state = props.ingredients.filter((el) => el !== props.name)
+      //     props.setIngredients(_state)
+      //   } else {
+      //     const _state = [...props.ingredients]
+      //     _state.push(props.name)
+      //     props.setIngredients(_state)
+      //   }
+      // }}
+      onPress={onPressHandler}
     >
       <Btn active={isSelected}>
         <StyledText isSelected={isSelected}>{props.name}</StyledText>

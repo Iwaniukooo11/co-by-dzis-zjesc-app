@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, ScrollView } from 'react-native'
+import { FlatList, ScrollView, View, SafeAreaView } from 'react-native'
 
 import Bolder from '../bolder/bolder'
 import SectionHeader from '../sectionHeader/sectionHeader'
@@ -43,9 +43,17 @@ const recipeContent = (props) => {
         </MiniHeader>
       </LineWrapper>
       <MiniHeader>Składniki:</MiniHeader>
-      <ScrollView style={{ flexGrow: 0, marginBottom: 40 }}>
+      {/* <View style={{ backgroundColor: 'red', alignSelf: 'center' }}> */}
+
+      {/* <ScrollView
+        style={{ marginBottom: 40 }}
+        // showsVerticalScrollIndicator={false}
+      > */}
+      <SafeAreaView style={{ marginBottom: 40 }}>
         <FlatList
+          style={{ flexGrow: 0 }}
           data={props.food.ingredients}
+          // contentContainerStyle={{ flexGrow: 0 }}
           renderItem={({ item }) => (
             <StyledIngredient>
               <StyledIndexer>
@@ -61,11 +69,15 @@ const recipeContent = (props) => {
           )}
           keyExtractor={(item) => item.id}
         />
-      </ScrollView>
+        {/* </ScrollView> */}
+      </SafeAreaView>
+      {/* </View> */}
       <MiniHeader>Przepis: </MiniHeader>
-      <ScrollView style={{ flexGrow: 0, marginBottom: 10 }}>
+      {/* <ScrollView style={{ flexGrow: 0, marginBottom: 10 }}> */}
+      <SafeAreaView style={{ marginBottom: 10 }}>
         <FlatList
           data={props.food.content}
+          style={{ flexGrow: 0 }}
           renderItem={({ item, index }) => (
             <StyledIngredient style={{ marginVertical: 5 }}>
               <StyledIndexer>{`${index * 1 + 1}.  `}</StyledIndexer>
@@ -74,7 +86,8 @@ const recipeContent = (props) => {
           )}
           keyExtractor={(item) => item}
         />
-      </ScrollView>
+      </SafeAreaView>
+      {/* </ScrollView> */}
     </>
   )
 }

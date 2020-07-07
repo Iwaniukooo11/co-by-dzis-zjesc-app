@@ -1,5 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Text, Modal, Animated, TouchableOpacity } from 'react-native'
+import {
+  Text,
+  Modal,
+  Animated,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native'
 
 import styled from 'styled-components/native'
 import Desc from '../desc/desc'
@@ -48,6 +54,7 @@ const StyledCloseIcon = styled(Icon)`
 
 const StyledTouchableOpacity = styled(TouchableOpacity)`
   position: absolute;
+  z-index: 100;
   top: 20px;
   right: 30px;
 `
@@ -89,7 +96,9 @@ const recipeProposition = (props) => {
               // style={{ transform: [{ translateY: -1 }], marginRight: 10 }}
             />
           </StyledTouchableOpacity>
-          <RecipeContent food={props.food} showName={true} />
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <RecipeContent food={props.food} showName={true} />
+          </ScrollView>
         </Layout>
         {/* </Animated.View> */}
       </Modal>

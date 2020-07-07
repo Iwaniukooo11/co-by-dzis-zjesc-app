@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, ScrollView, Text } from 'react-native'
+import { FlatList, ScrollView, Text, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import Bolder from '../../components/bolder/bolder'
@@ -58,6 +58,7 @@ const Recipes = (props) => {
             <SectionHeader small={true}>Inne pasujące dania:</SectionHeader>
             <FlatList
               data={foods}
+              contentContainerStyle={{ flexGrow: 1 }}
               renderItem={({ item }) => (
                 <RecipeProposition
                   food={{ ...item }}
