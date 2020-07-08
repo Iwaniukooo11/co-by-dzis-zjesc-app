@@ -81,7 +81,7 @@ const recipeProposition = (props) => {
         visible={isOpen}
         onRequestClose={() => setIsOpen(false)}
         // transparent={true}
-        presentationStyle={'overFullScreen'}
+        // presentationStyle={'overFullScreen'}
       >
         {/* <Animated.View style={{ opacity: fadeAnim }}> */}
         <Layout>
