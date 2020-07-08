@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Image } from 'react-native'
 import styled from 'styled-components/native'
+
 import Layout from '../../layout/layout'
 import theme from '../../layout/theme'
 import GreenButton from '../../components/greenButton/greenButton'
 import SectionHeader from '../../components/sectionHeader/sectionHeader'
 import Desc from '../../components/desc/desc'
+
 import NetInfo from '@react-native-community/netinfo'
 import { Icon } from 'react-native-elements'
 

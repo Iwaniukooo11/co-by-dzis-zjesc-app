@@ -20,7 +20,6 @@ const Ad = (props) => {
         )}&limit=3`
       )
       setFood(foods.data.data.data)
-      console.log('|FOODS|', foods.data.data.data)
     })()
   }, [])
 

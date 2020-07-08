@@ -3,11 +3,9 @@ import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 
 const StyledText = styled.Text`
-  /* color: */
   font-size: 22px;
   font-family: 'Poppins_600SemiBold';
   color: ${({ theme }) => theme.colorWhite};
-  /* color:${(props) => (props.isActive ? 'green' : 'red')}; */
 `
 
 const StyledTouchableOpacity = styled.TouchableOpacity.attrs((props) => ({
@@ -21,10 +19,8 @@ const StyledView = styled.View`
   background-color: ${({ theme }) => theme.colorGreenLight};
   padding: 10px 25px;
   justify-content: center;
-  /* align-self: center; */
   align-items: center;
   border-radius: 8px;
-
   opacity: ${(props) => (props.isActive ? 1 : 0.5)};
 `
 

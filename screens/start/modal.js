@@ -1,22 +1,20 @@
 import React from 'react'
-import { View, Modal, TouchableOpacity } from 'react-native'
-// import Modal from 'react-native-modal'
+import styled from 'styled-components/native'
+import { Modal, TouchableOpacity } from 'react-native'
+
 import Layout from '../../layout/layout'
 import theme from '../../layout/theme'
 import Desc from '../../components/desc/desc'
 import GreenButton from '../../components/greenButton/greenButton'
 import SectionHeader from '../../components/sectionHeader/sectionHeader'
-import { Icon } from 'react-native-elements'
 
-import styled from 'styled-components/native'
+import { Icon } from 'react-native-elements'
 
 const StyledDesc = styled(Desc)`
   margin: 30px 0 15px;
-  /* color: ${theme.colorGrey}; */
 `
 const Socials = styled.View`
   flex-direction: row;
-  /* display: flex; */
   flex: 1;
   width: 100%;
   justify-content: space-around;
@@ -46,9 +44,6 @@ const StartModal = (props) => {
             name="times-circle"
             type="font-awesome"
             color={theme.colorGreenLight}
-            // color={theme.colorGrey}
-
-            // style={{ transform: [{ translateY: -1 }], marginRight: 10 }}
           />
         </TouchableOpacity>
 

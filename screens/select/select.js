@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Text, FlatList, StyleSheet, View, SafeAreaView } from 'react-native'
+import { FlatList, StyleSheet, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import Layout from '../../layout/layout'
@@ -13,20 +13,13 @@ import GreenButton from '../../components/greenButton/greenButton'
 import Collapsible from 'react-native-collapsible'
 import { Icon } from 'react-native-elements'
 import axios from '../../utils/axios'
-import { ScrollView } from 'react-native-gesture-handler'
 
 const styles = StyleSheet.create({
-  list: {
-    // flexGrow: 1,
-    // backgroundColor: 'red',
-  },
   listContainer: {
     justifyContent: 'flex-start',
     alignItems: 'center',
     alignContent: 'center',
     flex: 1,
-    // flexDirection: 'row',
-    // flexWrap: 'wrap',
   },
 })
 
@@ -56,40 +49,23 @@ const Select = (props) => {
     const _collapsedState = { ...collapsedState }
     categories.forEach((category, i) => (_collapsedState[category] = true))
     setCollapsedState(_collapsedState)
-
-    console.log('hideAllIngr: ', _collapsedState)
     return _collapsedState
   }
 
-  // useEffect(() => {
-  //   alert('render!')
-  //   setCollapsedState({})
-  //   setSelectedIngredients([])
-  // }, [])
-  // props.navigation.addListener('willFocus', (payload) => {
-  //   alert('uhuhu')
-  //   setCollapsedState({})
-  //   setSelectedIngredients([])
-  // })
   const fixCollapse = (data) => {
     const _collapsedState = [...data]
     data.forEach((category, i) => (_collapsedState[category] = i > 0))
     setCollapsedState(_collapsedState)
-    console.log('DATA: ', _collapsedState)
   }
 
   useEffect(() => {
     ;(async () => {
       try {
-        // alert('uhuhu')
         if (props?.route?.params?.random) {
-          // alert('kurwa random')
           setSelectedIngredients([])
           setCollapsedState({})
           fixCollapse([...categories])
-          // alert(selectedIngredients.length)
         } else {
-          // alert(';not random')
           const catRes = await axios.get('/ingredient/all-categories')
           setCategories(catRes.data.data.data)
 
@@ -99,12 +75,6 @@ const Select = (props) => {
           setIngredients(ingredientRes.data.data.data)
 
           //true jak jest schowany!
-          // const _collapsedState = { ...collapsedState }
-          // catRes.data.data.data.forEach(
-          //   (category, i) => (_collapsedState[category] = i > 0)
-          // )
-          // setCollapsedState(_collapsedState)
-          // console.log(_collapsedState)
           fixCollapse(catRes.data.data.data)
         }
       } catch (err) {
@@ -175,7 +145,6 @@ const Select = (props) => {
         }}
         isActive={selectedIngredients.length > 4}
       >
-        {/* Znajdź przepis! */}
         {selectedIngredients.length >= 5
           ? 'Znajdź przepis!'
           : `Zaznacz jeszcze ${5 - selectedIngredients.length}`}

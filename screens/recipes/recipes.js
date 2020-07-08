@@ -6,14 +6,11 @@ import Bolder from '../../components/bolder/bolder'
 import Desc from '../../components/desc/desc'
 import Layout from '../../layout/layout'
 import SectionHeader from '../../components/sectionHeader/sectionHeader'
-import MiniHeader from '../../components/miniHeader/miniHeader'
 import GreenButton from '../../components/greenButton/greenButton'
 import RecipeProposition from '../../components/recipeProposition/recipeProposition'
+import RecipeContent from '../../components/recipeContent/recipeContent'
 
 import theme from '../../layout/theme'
-import { Icon } from 'react-native-elements'
-
-import RecipeContent from '../../components/recipeContent/recipeContent'
 
 const Line = styled.View`
   width: 100%;
@@ -65,7 +62,6 @@ const Recipes = (props) => {
               Wybierz więcej składników!
             </Desc>
 
-            {/* <Line /> */}
             <GreenButton
               isActive={true}
               onPressHandler={() =>
@@ -74,7 +70,6 @@ const Recipes = (props) => {
             >
               Szukaj ponownie
             </GreenButton>
-            {/* <Line second /> */}
           </>
         )}
 
@@ -87,8 +82,6 @@ const Recipes = (props) => {
               renderItem={({ item }) => (
                 <RecipeProposition
                   food={{ ...item }}
-                  // time={item.time}
-                  // name={item.name}
                   keyExtractor={(item) => item.name}
                 />
               )}

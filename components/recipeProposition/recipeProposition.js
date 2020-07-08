@@ -44,11 +44,8 @@ const TimeNumber = styled.Text`
 `
 
 const StyledCloseIcon = styled(Icon)`
-  /* position: absolute; */
   top: 10px;
   right: 10px;
-  /* transform: scale(1.5) translateY(-20px); */
-  /* margin-left: 250px; */
   margin: 0 10px 20px 250px;
 `
 
@@ -71,8 +68,6 @@ const recipeProposition = (props) => {
       delay: 75,
     }).start()
   }
-  // useEffect(() => fadeIn())
-  // useEffect()
 
   return (
     <WrapTouchable onPress={() => setIsOpen(true)}>
@@ -80,10 +75,7 @@ const recipeProposition = (props) => {
         animationType="slide"
         visible={isOpen}
         onRequestClose={() => setIsOpen(false)}
-        // transparent={true}
-        // presentationStyle={'overFullScreen'}
       >
-        {/* <Animated.View style={{ opacity: fadeAnim }}> */}
         <Layout>
           <StyledTouchableOpacity onPress={() => setIsOpen(false)}>
             <StyledCloseIcon
@@ -91,16 +83,12 @@ const recipeProposition = (props) => {
               name="times-circle"
               type="font-awesome"
               color={theme.colorGreenLight}
-              // color={theme.colorGrey}
-
-              // style={{ transform: [{ translateY: -1 }], marginRight: 10 }}
             />
           </StyledTouchableOpacity>
           <ScrollView showsVerticalScrollIndicator={false}>
             <RecipeContent food={props.food} showName={true} />
           </ScrollView>
         </Layout>
-        {/* </Animated.View> */}
       </Modal>
       <Name>
         {`${props.food.name[0].toUpperCase()}${props.food.name.slice(1)}`}

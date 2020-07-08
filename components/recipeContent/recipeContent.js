@@ -7,6 +7,7 @@ import MiniHeader from '../miniHeader/miniHeader'
 import styled from 'styled-components/native'
 import theme from '../../layout/theme'
 import Desc from '../desc/desc'
+
 import { Icon } from 'react-native-elements'
 
 const LineWrapper = styled.View`
@@ -18,7 +19,6 @@ const LineWrapper = styled.View`
 const StyledIngredient = styled(Desc)`
   color: ${({ theme }) => theme.colorBlack};
   margin-left: 10px;
-  /* margin: 10px 0 10px 10px; */
 `
 const StyledIndexer = styled(Desc)`
   color: ${({ theme }) => theme.colorGreenLight};
@@ -43,17 +43,11 @@ const recipeContent = (props) => {
         </MiniHeader>
       </LineWrapper>
       <MiniHeader>Składniki:</MiniHeader>
-      {/* <View style={{ backgroundColor: 'red', alignSelf: 'center' }}> */}
 
-      {/* <ScrollView
-        style={{ marginBottom: 40 }}
-        // showsVerticalScrollIndicator={false}
-      > */}
       <SafeAreaView style={{ marginBottom: 40 }}>
         <FlatList
           style={{ flexGrow: 0 }}
           data={props.food.ingredients}
-          // contentContainerStyle={{ flexGrow: 0 }}
           renderItem={({ item }) => (
             <StyledIngredient>
               <StyledIndexer>
@@ -64,16 +58,12 @@ const recipeContent = (props) => {
                     } `}
               </StyledIndexer>
               {`${item.ingredient.name}`}
-              {/* {item.optional && '  (opcjonalnie)'} */}
             </StyledIngredient>
           )}
           keyExtractor={(item) => item.id}
         />
-        {/* </ScrollView> */}
       </SafeAreaView>
-      {/* </View> */}
       <MiniHeader>Przepis: </MiniHeader>
-      {/* <ScrollView style={{ flexGrow: 0, marginBottom: 10 }}> */}
       <SafeAreaView style={{ marginBottom: 10 }}>
         <FlatList
           data={props.food.content}
@@ -87,7 +77,6 @@ const recipeContent = (props) => {
           keyExtractor={(item) => item}
         />
       </SafeAreaView>
-      {/* </ScrollView> */}
     </>
   )
 }

@@ -8,6 +8,5 @@ const miniHeader = styled.Text`
     props.color === 'black'
       ? props.theme.colorBlack
       : props.theme.colorGreenLight};
-  /* letter-spacing: -1px; */
 `
 export default miniHeader
