@@ -94,7 +94,7 @@ const Select = (props) => {
           setCategories(catRes.data.data.data)
 
           const ingredientRes = await axios.get(
-            '/ingredient?sort=category&limit=100'
+            '/ingredient?sort=name,-category&limit=100'
           )
           setIngredients(ingredientRes.data.data.data)
 
