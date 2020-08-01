@@ -19,7 +19,7 @@ const Ad = (props) => {
           ','
         )}&limit=3`
       )
-      setFood(foods.data.data.data)
+      setFood(foods.data.data.data || [])
     })()
   }, [])
 
@@ -45,7 +45,10 @@ const Ad = (props) => {
         onAdViewDidReceiveAd={() => setIsAdLoad(true)}
       />
       <GreenButton
-        isActive={timeLeft <= -1 || food !== false}
+        isActive={
+          timeLeft <= -1
+          //  && food !== false
+        }
         style={{ alignSelf: 'center' }}
         onPressHandler={() =>
           props.navigation.navigate('Recipes', { food: food || [] })
