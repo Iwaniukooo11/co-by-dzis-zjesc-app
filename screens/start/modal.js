@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 import { Modal, TouchableOpacity } from 'react-native'
+import * as Linking from 'expo-linking'
 
 import Layout from '../../layout/layout'
 import theme from '../../layout/theme'
@@ -49,18 +50,25 @@ const StartModal = (props) => {
 
         <SectionHeader>Pomóż nam!</SectionHeader>
         <StyledDesc center={true}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quam
-          aut est quos tempore
+          Chesz mieć swój wkład w rozwój aplikacji? Zostaw po sobie opinię!
         </StyledDesc>
         <GreenButton isActive={true} style={{ alignSelf: 'center' }}>
           Oceń nas!
         </GreenButton>
         <StyledDesc center>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quam
-          aut est quos
+          A może masz swój pomysł na danie, którego nie ma w apce? Wyślij go
+          nam!
         </StyledDesc>
-        <GreenButton isActive={true} style={{ alignSelf: 'center' }}>
-          Dodaj swój przepis
+        <GreenButton
+          isActive={true}
+          style={{ alignSelf: 'center' }}
+          onPressHandler={() =>
+            Linking.openURL(
+              'https://docs.google.com/forms/d/e/1FAIpQLSfrLlXvQqYS0ZgHWC1y6lhFGjQEXTTrkIl4fWau8AHHiCqBQg/viewform?usp=sf_link'
+            )
+          }
+        >
+          Dodaj swój przepis!
         </GreenButton>
         {/* <Socials>
           <Icon

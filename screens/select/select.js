@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -116,6 +116,7 @@ const Select = (props) => {
 
               <Collapsible collapsed={collapsedState[item]} duration={0}>
                 <FlatList
+                  listKey={item}
                   style={{ marginVertical: 5 }}
                   contentContainerStyle={styles.listContainer}
                   data={ingredients.filter((ingr) => ingr.category === item)}

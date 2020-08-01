@@ -59,7 +59,7 @@ const Start = (props) => {
         <StyledImage source={require('../../assets/logo/logo.jpg')} />
         <SectionHeader>Co by dziś zjeść?</SectionHeader>
         <StyledDesc>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Wybierz dostępne składniki i zobacz, jakie dania możesz z nich zrobić!
         </StyledDesc>
         <GreenButton
           isActive={isConnected}
