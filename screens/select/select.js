@@ -78,7 +78,7 @@ const Select = (props) => {
           fixCollapse(catRes.data.data.data)
         }
       } catch (err) {
-        console.log('err from catch', err)
+        console.log('err from catch', err, err.message)
       }
     })()
   }, [props?.route?.params?.random])

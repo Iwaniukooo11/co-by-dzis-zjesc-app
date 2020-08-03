@@ -4,7 +4,7 @@
     "slug": "co-by-dzis-zjesc",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logo/logo.jpg",
+    "icon": "./assets/logo/logo.png",
     "splash": {
       "image": "./assets/logo/logo-space.png",
       "resizeMode": "contain",
