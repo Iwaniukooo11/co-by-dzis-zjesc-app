@@ -39,7 +39,7 @@ const StartModal = (props) => {
         <ScrollView showsVerticalScrollIndicator={false}>
           <TouchableOpacity
             onPress={() => props.setModal(false)}
-            style={{ position: 'absolute', right: 40, top: 0 }}
+            style={{ position: 'absolute', right: 20, top: 0, zIndex: 10 }}
           >
             <Icon
               size={32}
