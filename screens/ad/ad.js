@@ -35,7 +35,7 @@ const Ad = (props) => {
 
   return (
     <Layout>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <SectionHeader>Dzięki reklamie apka jest darmowa!</SectionHeader>
 
         <AdMobBanner

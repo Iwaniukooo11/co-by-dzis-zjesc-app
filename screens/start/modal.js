@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Modal, TouchableOpacity } from 'react-native'
+import { Modal, TouchableOpacity, ScrollView } from 'react-native'
 import * as Linking from 'expo-linking'
 
 import Layout from '../../layout/layout'
@@ -36,41 +36,42 @@ const StartModal = (props) => {
       animationType="slide"
     >
       <Layout>
-        <TouchableOpacity
-          onPress={() => props.setModal(false)}
-          style={{ position: 'absolute', right: 40, top: 40 }}
-        >
-          <Icon
-            size={32}
-            name="times-circle"
-            type="font-awesome"
-            color={theme.colorGreenLight}
-          />
-        </TouchableOpacity>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <TouchableOpacity
+            onPress={() => props.setModal(false)}
+            style={{ position: 'absolute', right: 40, top: 0 }}
+          >
+            <Icon
+              size={32}
+              name="times-circle"
+              type="font-awesome"
+              color={theme.colorGreenLight}
+            />
+          </TouchableOpacity>
 
-        <SectionHeader>Pomóż nam!</SectionHeader>
-        <StyledDesc center={true}>
-          Chesz mieć swój wkład w rozwój aplikacji? Zostaw po sobie opinię!
-        </StyledDesc>
-        <GreenButton isActive={true} style={{ alignSelf: 'center' }}>
-          Oceń nas!
-        </GreenButton>
-        <StyledDesc center>
-          A może masz swój pomysł na danie, którego nie ma w apce? Wyślij go
-          nam!
-        </StyledDesc>
-        <GreenButton
-          isActive={true}
-          style={{ alignSelf: 'center' }}
-          onPressHandler={() =>
-            Linking.openURL(
-              'https://docs.google.com/forms/d/e/1FAIpQLSfrLlXvQqYS0ZgHWC1y6lhFGjQEXTTrkIl4fWau8AHHiCqBQg/viewform?usp=sf_link'
-            )
-          }
-        >
-          Dodaj swój przepis!
-        </GreenButton>
-        {/* <Socials>
+          <SectionHeader>Pomóż nam!</SectionHeader>
+          <StyledDesc center={true}>
+            Chesz mieć swój wkład w rozwój aplikacji? Zostaw po sobie opinię!
+          </StyledDesc>
+          <GreenButton isActive={true} style={{ alignSelf: 'center' }}>
+            Oceń nas!
+          </GreenButton>
+          <StyledDesc center>
+            A może masz swój pomysł na danie, którego nie ma w apce? Wyślij go
+            nam!
+          </StyledDesc>
+          <GreenButton
+            isActive={true}
+            style={{ alignSelf: 'center' }}
+            onPressHandler={() =>
+              Linking.openURL(
+                'https://docs.google.com/forms/d/e/1FAIpQLSfrLlXvQqYS0ZgHWC1y6lhFGjQEXTTrkIl4fWau8AHHiCqBQg/viewform?usp=sf_link'
+              )
+            }
+          >
+            Dodaj swój przepis!
+          </GreenButton>
+          {/* <Socials>
           <Icon
             size={50}
             name="logo-facebook"
@@ -86,6 +87,7 @@ const StartModal = (props) => {
             // style={{ borderRadius: '50%' }}
           />
         </Socials> */}
+        </ScrollView>
       </Layout>
     </Modal>
   )
