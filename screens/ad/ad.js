@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import { ScrollView } from 'react-native'
 import Layout from '../../layout/layout'
 import SectionHeader from '../../components/sectionHeader/sectionHeader'
 import GreenButton from '../../components/greenButton/greenButton'
@@ -35,27 +35,29 @@ const Ad = (props) => {
 
   return (
     <Layout>
-      <SectionHeader>Dzięki reklamie apka jest darmowa!</SectionHeader>
+      <ScrollView>
+        <SectionHeader>Dzięki reklamie apka jest darmowa!</SectionHeader>
 
-      <AdMobBanner
-        adUnitID="ca-app-pub-9778931413335470/5199726999"
-        bannerSize="mediumRectangle"
-        servePersonalizedAds={true}
-        style={{ marginVertical: 40 }}
-        onAdViewDidReceiveAd={() => setIsAdLoad(true)}
-      />
-      <GreenButton
-        isActive={
-          timeLeft <= -1
-          //  && food !== false
-        }
-        style={{ alignSelf: 'center' }}
-        onPressHandler={() =>
-          props.navigation.navigate('Recipes', { food: food || [] })
-        }
-      >
-        {timeLeft > -1 ? timeLeft : 'Zobacz przepisy!'}
-      </GreenButton>
+        <AdMobBanner
+          adUnitID="ca-app-pub-9778931413335470/5199726999"
+          bannerSize="mediumRectangle"
+          servePersonalizedAds={true}
+          style={{ marginVertical: 40 }}
+          onAdViewDidReceiveAd={() => setIsAdLoad(true)}
+        />
+        <GreenButton
+          isActive={
+            timeLeft <= -1
+            //  && food !== false
+          }
+          style={{ alignSelf: 'center' }}
+          onPressHandler={() =>
+            props.navigation.navigate('Recipes', { food: food || [] })
+          }
+        >
+          {timeLeft > -1 ? timeLeft : 'Zobacz przepisy!'}
+        </GreenButton>
+      </ScrollView>
     </Layout>
   )
 }

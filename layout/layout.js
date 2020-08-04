@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BackHandler } from 'react-native'
+import { BackHandler, ScrollView } from 'react-native'
 import theme from './theme'
 
 import styled, { ThemeProvider } from 'styled-components/native'
@@ -38,8 +38,11 @@ const Layout = (props) => {
     <ThemeProvider theme={theme}>
       <>
         {/* <ScrollView showsVerticalScrollIndicator={false}> */}
-        <Wrapper center={props.center}>{props.children}</Wrapper>
-        {/* </ScrollView> */}
+        <Wrapper center={props.center}>
+          {/* <ScrollView showsVerticalScrollIndicator={false}> */}
+          {props.children}
+          {/* </ScrollView> */}
+        </Wrapper>
       </>
     </ThemeProvider>
   )
