@@ -96,7 +96,7 @@ const Select = (props) => {
   return ingredients.length > 0 ? (
     <Layout>
       <SectionHeader>Wybierz składniki</SectionHeader>
-      <Desc>Zostaną one użyte, aby znaleźć odpowiedni przepis </Desc>
+      <Desc>Zostaną one użyte, aby znaleźć odpowiedni przepis</Desc>
 
       <StyledFlatList
         data={categories}

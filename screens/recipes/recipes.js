@@ -42,7 +42,8 @@ const Recipes = (props) => {
         {firstFood ? (
           <>
             <Desc>
-              Najbardziej pasujące jedzenie, które możesz zrobić to{' '}
+              {/* Najbardziej pasujące jedzenie, które możesz zrobić to{' '} */}
+              Danie najbardziej odpowiadające posiadanym składnikom to
               <Bolder>{firstFood.name}</Bolder>
             </Desc>
 
@@ -65,7 +66,7 @@ const Recipes = (props) => {
         ) : (
           <>
             <Desc center style={{ marginTop: 30 }}>
-              Niestety, nie ma żadnego jedzenia, które można zrobić z wybranych
+              Niestety, nie ma żadnego dania, które można zrobić z wybranych
               przez Ciebie podpisów
             </Desc>
             <Desc center style={{ marginVertical: 20 }}>
