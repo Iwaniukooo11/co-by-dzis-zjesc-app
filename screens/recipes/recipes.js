@@ -1,6 +1,7 @@
 import React from 'react'
 import { FlatList, ScrollView, Text, View } from 'react-native'
 import styled from 'styled-components/native'
+import { AdMobBanner } from 'expo-ads-admob'
 
 import Bolder from '../../components/bolder/bolder'
 import Desc from '../../components/desc/desc'
@@ -27,7 +28,16 @@ const Recipes = (props) => {
   const firstFood = foods.shift()
   return (
     <Layout>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <AdMobBanner
+        adUnitID="ca-app-pub-9778931413335470/1103935823"
+        // bannerSize="banner"
+        servePersonalizedAds={true}
+        style={{ position: 'absolute', left: 0, bottom: 0, zIndex: 100 }}
+      />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={{ marginBottom: 40 }}
+      >
         <SectionHeader>Możliwe dania</SectionHeader>
         {firstFood ? (
           <>

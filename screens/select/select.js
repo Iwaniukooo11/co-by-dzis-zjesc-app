@@ -66,12 +66,22 @@ const Select = (props) => {
           setCollapsedState({})
           fixCollapse([...categories])
         } else {
-          const catRes = await axios.get('/ingredient/all-categories')
-          setCategories(catRes.data.data.data)
+          // const catRes = await axios.get('/ingredient/all-categories')
+          // setCategories(catRes.data.data.data)
 
-          const ingredientRes = await axios.get(
-            '/ingredient?sort=name,-category&limit=100'
+          // const ingredientRes = await axios.get(
+          //   '/ingredient?sort=name&limit=100'
+          // )
+          // setIngredients(ingredientRes.data.data.data)
+          const [catRes, ingredientRes] = await Promise.all([
+            axios.get('/ingredient/all-categories'),
+            axios.get('/ingredient?sort=name&limit=100'),
+          ])
+          console.log(
+            catRes.data.data.data,
+            ingredientRes.data.data.data.length
           )
+          setCategories(catRes.data.data.data)
           setIngredients(ingredientRes.data.data.data)
 
           //true jak jest schowany!
