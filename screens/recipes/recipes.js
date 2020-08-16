@@ -36,14 +36,14 @@ const Recipes = (props) => {
       />
       <ScrollView
         showsVerticalScrollIndicator={false}
-        style={{ marginBottom: 40 }}
+        // style={{ marginBottom: 40 }}
       >
         <SectionHeader>Możliwe dania</SectionHeader>
         {firstFood ? (
           <>
             <Desc>
               {/* Najbardziej pasujące jedzenie, które możesz zrobić to{' '} */}
-              Danie najbardziej odpowiadające posiadanym składnikom to
+              Danie najbardziej odpowiadające posiadanym składnikom to{' '}
               <Bolder>{firstFood.name}</Bolder>
             </Desc>
 

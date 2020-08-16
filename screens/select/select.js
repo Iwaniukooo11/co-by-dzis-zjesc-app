@@ -101,6 +101,7 @@ const Select = (props) => {
       <StyledFlatList
         data={categories}
         keyExtractor={(obj) => obj.name}
+        listKey={(obj) => obj.name}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => {
           return (
