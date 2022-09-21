@@ -7,7 +7,7 @@ Unfortunately, because of server costs and lack of time, I had to remove my app 
 
 Feel free to see [Promotional video on YouTube](https://www.youtube.com/watch?v=sEZgtG3A0Uk)
 
-You may be interested in [Backend of "Co by dziś zjeść" Api](https://github.com/Iwaniukooo11/co-by-dzis-zjesc-api)
+You may be interested in [Backend of "Co by dziś zjeść" Api](https://github.com/Iwaniukooo11/co-by-dzis-zjesc-api) or [Webpage of my app](https://iwaniukooo11.github.io/app-webpage/)
 
 How does this app work:
 1. Select owned ingredients
